@@ -1,64 +1,77 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:3003").setExtent([1440160.992861, 4490875.488560, 1445087.081050, 4497290.431762]);
+//ol.proj.get("EPSG:25832").setExtent([544677.871300, 4459372.885189, 578174.121300, 4488009.406611]);
 var wms_layers = [];
 
-
-        var lyr_GoogleSatellite_0 = new ol.layer.Tile({
-            'title': 'Google Satellite',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-            attributions: ' &middot; <a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-                url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
-            })
+var format_Particelle = new ol.format.GeoJSON();
+var features_Particelle = format_Particelle.readFeatures(json_Particelle, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:25832'});
+var jsonSource_Particelle = new ol.source.Vector({
+        attributions: '<a class="legend"><img src="styles/legend/Particelle.png" /> <b>Particelle</b>'
         });
-var format_TIMEDISTANCE_BIKEREGULAR_1_1 = new ol.format.GeoJSON();
-var features_TIMEDISTANCE_BIKEREGULAR_1_1 = format_TIMEDISTANCE_BIKEREGULAR_1_1.readFeatures(json_TIMEDISTANCE_BIKEREGULAR_1_1, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3003'});
-var jsonSource_TIMEDISTANCE_BIKEREGULAR_1_1 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_TIMEDISTANCE_BIKEREGULAR_1_1.addFeatures(features_TIMEDISTANCE_BIKEREGULAR_1_1);
-var lyr_TIMEDISTANCE_BIKEREGULAR_1_1 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_TIMEDISTANCE_BIKEREGULAR_1_1, 
-                style: style_TIMEDISTANCE_BIKEREGULAR_1_1,
-                popuplayertitle: 'TIMEDISTANCE_BIKEREGULAR_1',
-                interactive: true,
-    title: 'TIMEDISTANCE_BIKEREGULAR_1<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_0.png" /> 5 min<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_1.png" /> 10 min<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_2.png" /> 15 min<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_3.png" /> 20 min<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_4.png" /> 25 min<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_5.png" /> 30<br />\
-    <img src="styles/legend/TIMEDISTANCE_BIKEREGULAR_1_1_6.png" /> <br />'
-        });
-var format_CASE_2 = new ol.format.GeoJSON();
-var features_CASE_2 = format_CASE_2.readFeatures(json_CASE_2, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3003'});
-var jsonSource_CASE_2 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_CASE_2.addFeatures(features_CASE_2);
-var lyr_CASE_2 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_CASE_2, 
-                style: style_CASE_2,
-                popuplayertitle: 'CASE',
-                interactive: true,
-                title: '<img src="styles/legend/CASE_2.png" /> CASE'
+jsonSource_Particelle.addFeatures(features_Particelle);
+var lyr_Particelle = new ol.layer.Vector({
+            declutter: false,
+            source:jsonSource_Particelle, 
+            style: style_Particelle,
+            permalink: "Particelle",
+            popuplayertitle: 'Particelle',
+            interactive: true,
+            title: '<img src="styles/legend/Particelle.png" /> Particelle'
             });
+var group_Catasto = new ol.layer.Group({
+                                layers: [lyr_Particelle,],
+                                openInLayerSwitcher: true,
+                                title: 'Catasto'});
+var group_ASAREEDIINSEDIAMENTOPRODUTTIVO = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AS - AREE DI INSEDIAMENTO PRODUTTIVO'});
+var group_AIRETIINFRASTRUTTURE = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AI - RETI INFRASTRUTTURE'});
+var group_AAAREEDIINTERESSENATURALISTICOISTITUZIONALMENTETUTELATE = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AA - AREE DI INTERESSE NATURALISTICO ISTITUZIONALMENTE TUTELATE'});
+var group_AAAREERECUPEROAMBIENTALE = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AA - AREE RECUPERO AMBIENTALE'});
+var group_AICOMPONENTIASSETTOINSEDIATIVO = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AI - COMPONENTI ASSETTO INSEDIATIVO'});
+var group_AACOMPONENTIASSETTOAMBIENTALE = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'AA - COMPONENTI ASSETTO AMBIENTALE'});
+var group_Dlgsn422004art142 = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'D.lgs. n. 42/2004 - art. 142'});
+var group_CatastoWMS = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'Catasto WMS'});
+var group_CatastoWFS = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'Catasto WFS'});
+var group_temp = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'temp'});
+var group_Databasegeotopograficoallascala110k = new ol.layer.Group({
+                                layers: [],
+                                openInLayerSwitcher: true,
+                                title: 'Database geotopografico alla scala 1:10k'});
 
-lyr_GoogleSatellite_0.setVisible(true);lyr_TIMEDISTANCE_BIKEREGULAR_1_1.setVisible(true);lyr_CASE_2.setVisible(true);
-var layersList = [lyr_GoogleSatellite_0,lyr_TIMEDISTANCE_BIKEREGULAR_1_1,lyr_CASE_2];
-lyr_TIMEDISTANCE_BIKEREGULAR_1_1.set('fieldAliases', {'id': 'id', 'AA_MINS': 'AA_MINS', 'AA_MODE': 'AA_MODE', 'TOTAL_POP': 'TOTAL_POP', });
-lyr_CASE_2.set('fieldAliases', {'id': 'id', 'cat_01': 'cat_01', 'cat_02': 'cat_02', 'cat_03': 'cat_03', 'cat_04': 'cat_04', 'cat_05': 'cat_05', 'area_m': 'area_m', });
-lyr_TIMEDISTANCE_BIKEREGULAR_1_1.set('fieldImages', {'id': '', 'AA_MINS': '', 'AA_MODE': '', 'TOTAL_POP': '', });
-lyr_CASE_2.set('fieldImages', {'id': '', 'cat_01': '', 'cat_02': '', 'cat_03': '', 'cat_04': '', 'cat_05': '', 'area_m': '', });
-lyr_TIMEDISTANCE_BIKEREGULAR_1_1.set('fieldLabels', {'id': 'no label', 'AA_MINS': 'no label', 'AA_MODE': 'no label', 'TOTAL_POP': 'no label', });
-lyr_CASE_2.set('fieldLabels', {'id': 'no label', 'cat_01': 'no label', 'cat_02': 'no label', 'cat_03': 'no label', 'cat_04': 'no label', 'cat_05': 'no label', 'area_m': 'no label', });
-lyr_CASE_2.on('precompose', function(evt) {
+lyr_Particelle.setVisible(true);
+var layersList = [group_Catasto];
+lyr_Particelle.set('fieldAliases', {'INSPIREID_': 'INSPIREID_', 'INSPIREI_1': 'INSPIREI_1', 'LABEL': 'LABEL', 'NATIONALCA': 'NATIONALCA', 'ADMINISTRA': 'ADMINISTRA', 'COMUNE': 'COMUNE', 'MAPPA': 'MAPPA', 'CODE': 'CODE', 'PPR_AMB_PA': 'PPR_AMB_PA', 'PAI_PI': 'PAI_PI', 'PAI_PG': 'PAI_PG', 'PAI_DP': 'PAI_DP', 'PAI_RI': 'PAI_RI', 'PAI_RG': 'PAI_RG', 'CDU': 'CDU', 'LINK': 'LINK', 'on_off': 'on_off', });
+lyr_Particelle.set('fieldImages', {'INSPIREID_': '', 'INSPIREI_1': '', 'LABEL': '', 'NATIONALCA': '', 'ADMINISTRA': '', 'COMUNE': '', 'MAPPA': '', 'CODE': '', 'PPR_AMB_PA': '', 'PAI_PI': '', 'PAI_PG': '', 'PAI_DP': '', 'PAI_RI': '', 'PAI_RG': '', 'CDU': '', 'LINK': '', 'on_off': '', });
+lyr_Particelle.set('fieldLabels', {'INSPIREID_': 'no label', 'INSPIREI_1': 'no label', 'LABEL': 'no label', 'NATIONALCA': 'no label', 'ADMINISTRA': 'no label', 'COMUNE': 'no label', 'MAPPA': 'no label', 'CODE': 'no label', 'PPR_AMB_PA': 'no label', 'PAI_PI': 'no label', 'PAI_PG': 'no label', 'PAI_DP': 'no label', 'PAI_RI': 'no label', 'PAI_RG': 'no label', 'CDU': 'no label', 'LINK': 'no label', 'on_off': 'no label', });
+lyr_Particelle.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
