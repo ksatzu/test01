@@ -5,6 +5,7 @@ var wms_layers = [];
 
         var lyr_GoogleSatellite = new ol.layer.Tile({
             'title': 'Google Satellite',
+            'baseLayer':'true',
             'opacity': 1.000000,
             
             
@@ -13,132 +14,132 @@ var wms_layers = [];
                 url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
         });
-var lyr_Particelle = new ol.layer.Tile({
+var lyr_Particelle_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Particelle</b><br />\
+                attributions: "<a class='legend'><b>Particelle_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "CP.CadastralParcel",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Particelle<br />\
+            title: '<div id="layertitle">Particelle_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Particelle',
-            permalink: 'Particelle',
+            popuplayertitle: 'Particelle_WMS',
+            permalink: 'Particelle_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Particelle, 1]);
-    lyr_Particelle.setVisible(false);
-var lyr_Fabbricati = new ol.layer.Tile({
+    wms_layers.push([lyr_Particelle_WMS, 1]);
+    lyr_Particelle_WMS.setVisible(false);
+var lyr_Fabbricati_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Fabbricati</b><br />\
+                attributions: "<a class='legend'><b>Fabbricati_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "fabbricati",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Fabbricati<br />\
+            title: '<div id="layertitle">Fabbricati_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Fabbricati',
-            permalink: 'Fabbricati',
+            popuplayertitle: 'Fabbricati_WMS',
+            permalink: 'Fabbricati_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Fabbricati, 1]);
-    lyr_Fabbricati.setVisible(false);
-var lyr_Strade = new ol.layer.Tile({
+    wms_layers.push([lyr_Fabbricati_WMS, 1]);
+    lyr_Fabbricati_WMS.setVisible(false);
+var lyr_Strade_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Strade</b><br />\
+                attributions: "<a class='legend'><b>Strade_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "strade",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Strade<br />\
+            title: '<div id="layertitle">Strade_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Strade',
-            permalink: 'Strade',
+            popuplayertitle: 'Strade_WMS',
+            permalink: 'Strade_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Strade, 0]);
-    lyr_Strade.setVisible(false);
-var lyr_Acque = new ol.layer.Tile({
+    wms_layers.push([lyr_Strade_WMS, 0]);
+    lyr_Strade_WMS.setVisible(false);
+var lyr_Acque_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Acque</b><br />\
+                attributions: "<a class='legend'><b>Acque_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "acque",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Acque<br />\
+            title: '<div id="layertitle">Acque_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Acque',
-            permalink: 'Acque',
+            popuplayertitle: 'Acque_WMS',
+            permalink: 'Acque_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Acque, 0]);
-    lyr_Acque.setVisible(false);
-var lyr_Mappe = new ol.layer.Tile({
+    wms_layers.push([lyr_Acque_WMS, 0]);
+    lyr_Acque_WMS.setVisible(false);
+var lyr_Mappe_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Mappe</b><br />\
+                attributions: "<a class='legend'><b>Mappe_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "CP.CadastralZoning",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Mappe<br />\
+            title: '<div id="layertitle">Mappe_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Mappe',
-            permalink: 'Mappe',
+            popuplayertitle: 'Mappe_WMS',
+            permalink: 'Mappe_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Mappe, 1]);
-    lyr_Mappe.setVisible(false);
-var lyr_Vestizioni = new ol.layer.Tile({
+    wms_layers.push([lyr_Mappe_WMS, 1]);
+    lyr_Mappe_WMS.setVisible(false);
+var lyr_Vestizioni_WMS = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php",
-                attributions: "<a class='legend'><b>Vestizioni</b><br />\
+                attributions: "<a class='legend'><b>Vestizioni_WMS</b><br />\
                 <img src=''></a>",
                 params: {
                 "LAYERS": "vestizioni",
                 "TILED": "true",
                 "VERSION": "1.3.0"},
             })),
-            title: '<div id="layertitle">Vestizioni<br />\
+            title: '<div id="layertitle">Vestizioni_WMS<br />\
             <i class="fas fa-angle-up" id="secondImage"></i><i class="fas fa-angle-down" id="firstImage"></i></div><a class="layerlegend">\
             <img src=""></a>',
-            popuplayertitle: 'Vestizioni',
-            permalink: 'Vestizioni',
+            popuplayertitle: 'Vestizioni_WMS',
+            permalink: 'Vestizioni_WMS',
             opacity: 1.000000,
             
             
             });
-    wms_layers.push([lyr_Vestizioni, 1]);
-    lyr_Vestizioni.setVisible(false);
+    wms_layers.push([lyr_Vestizioni_WMS, 1]);
+    lyr_Vestizioni_WMS.setVisible(false);
 var format_PianoUrbanisticoComunale = new ol.format.GeoJSON();
 var features_PianoUrbanisticoComunale = format_PianoUrbanisticoComunale.readFeatures(json_PianoUrbanisticoComunale, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:25832'});
@@ -182,6 +183,38 @@ var lyr_Particelle = new ol.layer.Vector({
             interactive: true,
             title: '<img src="styles/legend/Particelle.png" /> Particelle'
             });
+var format_Vestizione = new ol.format.GeoJSON();
+var features_Vestizione = format_Vestizione.readFeatures(json_Vestizione, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:25832'});
+var jsonSource_Vestizione = new ol.source.Vector({
+        attributions: "<a class='legend'><b>Vestizione</b></a>"
+        });
+jsonSource_Vestizione.addFeatures(features_Vestizione);
+var lyr_Vestizione = new ol.layer.Vector({
+            declutter: false,
+            source:jsonSource_Vestizione, 
+            style: style_Vestizione,
+            permalink: "Vestizione",
+            popuplayertitle: 'Vestizione',
+            interactive: true,
+            title: 'Vestizione'
+            });
+var format_Mappe = new ol.format.GeoJSON();
+var features_Mappe = format_Mappe.readFeatures(json_Mappe, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:25832'});
+var jsonSource_Mappe = new ol.source.Vector({
+        attributions: '<a class="legend"><img src="styles/legend/Mappe.png" /> <b>Mappe</b>'
+        });
+jsonSource_Mappe.addFeatures(features_Mappe);
+var lyr_Mappe = new ol.layer.Vector({
+            declutter: false,
+            source:jsonSource_Mappe, 
+            style: style_Mappe,
+            permalink: "Mappe",
+            popuplayertitle: 'Mappe',
+            interactive: true,
+            title: '<img src="styles/legend/Mappe.png" /> Mappe'
+            });
 var format_Maschera = new ol.format.GeoJSON();
 var features_Maschera = format_Maschera.readFeatures(json_Maschera, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:25832'});
@@ -219,7 +252,7 @@ var group_Cartografiagenerale = new ol.layer.Group({
                                 openInLayerSwitcher: true,
                                 title: 'Cartografia generale'});
 var group_Catasto = new ol.layer.Group({
-                                layers: [lyr_Particelle,],
+                                layers: [lyr_Particelle,lyr_Vestizione,lyr_Mappe,],
                                 openInLayerSwitcher: true,
                                 title: 'Catasto'});
 var group_PianoUrbanisticoComunale = new ol.layer.Group({
@@ -311,18 +344,24 @@ var group_Databasegeotopograficoallascala110k = new ol.layer.Group({
                                 openInLayerSwitcher: true,
                                 title: 'Database geotopografico alla scala 1:10k'});
 
-lyr_GoogleSatellite.setVisible(true);lyr_Particelle.setVisible(false);lyr_Fabbricati.setVisible(false);lyr_Strade.setVisible(true);lyr_Acque.setVisible(true);lyr_Mappe.setVisible(false);lyr_Vestizioni.setVisible(false);lyr_PianoUrbanisticoComunale.setVisible(true);lyr_Particelle.setVisible(true);lyr_Maschera.setVisible(true);lyr_LimiteComune.setVisible(true);
-var layersList = [group_Basemap,lyr_Particelle,lyr_Fabbricati,lyr_Strade,lyr_Acque,lyr_Mappe,lyr_Vestizioni,group_PianoUrbanisticoComunale,group_Catasto,group_Cartografiagenerale];
+lyr_GoogleSatellite.setVisible(true);lyr_Particelle_WMS.setVisible(false);lyr_Fabbricati_WMS.setVisible(false);lyr_Strade_WMS.setVisible(true);lyr_Acque_WMS.setVisible(true);lyr_Mappe_WMS.setVisible(false);lyr_Vestizioni_WMS.setVisible(false);lyr_PianoUrbanisticoComunale.setVisible(true);lyr_Particelle.setVisible(true);lyr_Vestizione.setVisible(true);lyr_Mappe.setVisible(true);lyr_Maschera.setVisible(true);lyr_LimiteComune.setVisible(true);
+var layersList = [group_Basemap,lyr_Particelle_WMS,lyr_Fabbricati_WMS,lyr_Strade_WMS,lyr_Acque_WMS,lyr_Mappe_WMS,lyr_Vestizioni_WMS,group_PianoUrbanisticoComunale,group_Catasto,group_Cartografiagenerale];
 lyr_PianoUrbanisticoComunale.set('fieldAliases', {'ClassID': 'ClassID', 'Zona': 'Zona', });
 lyr_Particelle.set('fieldAliases', {'CODE': 'CODE', 'CDU': 'CDU', });
+lyr_Vestizione.set('fieldAliases', {'INSPIREID_': 'INSPIREID_', 'INSPIREI_1': 'INSPIREI_1', 'LABEL': 'LABEL', 'NATIONALCA': 'NATIONALCA', 'ADMINISTRA': 'ADMINISTRA', 'COMUNE': 'COMUNE', 'MAPPA': 'MAPPA', 'CODE': 'CODE', 'PPR_AMB_PA': 'PPR_AMB_PA', 'PAI_PI': 'PAI_PI', 'PAI_PG': 'PAI_PG', 'PAI_DP': 'PAI_DP', 'PAI_RI': 'PAI_RI', 'PAI_RG': 'PAI_RG', 'CDU': 'CDU', 'LINK': 'LINK', });
+lyr_Mappe.set('fieldAliases', {'INSPIREID_': 'INSPIREID_', 'INSPIREI_1': 'INSPIREI_1', 'LABEL': 'LABEL', 'NATIONALCA': 'NATIONALCA', 'BEGINLIFES': 'BEGINLIFES', 'ENDLIFESPA': 'ENDLIFESPA', 'LEVEL': 'LEVEL', 'LEVELNAME': 'LEVELNAME', 'LEVELNAME_': 'LEVELNAME_', 'ORIGINALMA': 'ORIGINALMA', 'ADMINISTRA': 'ADMINISTRA', });
 lyr_Maschera.set('fieldAliases', {'FID': 'FID', });
 lyr_LimiteComune.set('fieldAliases', {'ClassID': 'ClassID', 'AVDICM': 'AVDICM', 'MNDICM': 'MNDICM', 'CIstat': 'CIstat', 'CBelfiore': 'CBelfiore', 'Nome': 'Nome', 'Shape_Leng': 'Shape_Leng', 'Shape_Area': 'Shape_Area', 'Determina': 'Determina', 'Note': 'Note', });
 lyr_PianoUrbanisticoComunale.set('fieldImages', {'ClassID': '', 'Zona': '', });
 lyr_Particelle.set('fieldImages', {'CODE': '', 'CDU': '', });
+lyr_Vestizione.set('fieldImages', {'INSPIREID_': '', 'INSPIREI_1': '', 'LABEL': '', 'NATIONALCA': '', 'ADMINISTRA': '', 'COMUNE': '', 'MAPPA': '', 'CODE': '', 'PPR_AMB_PA': '', 'PAI_PI': '', 'PAI_PG': '', 'PAI_DP': '', 'PAI_RI': '', 'PAI_RG': '', 'CDU': '', 'LINK': '', });
+lyr_Mappe.set('fieldImages', {'INSPIREID_': '', 'INSPIREI_1': '', 'LABEL': '', 'NATIONALCA': '', 'BEGINLIFES': '', 'ENDLIFESPA': '', 'LEVEL': '', 'LEVELNAME': '', 'LEVELNAME_': '', 'ORIGINALMA': '', 'ADMINISTRA': '', });
 lyr_Maschera.set('fieldImages', {'FID': '', });
 lyr_LimiteComune.set('fieldImages', {'ClassID': '', 'AVDICM': '', 'MNDICM': '', 'CIstat': '', 'CBelfiore': '', 'Nome': '', 'Shape_Leng': '', 'Shape_Area': '', 'Determina': '', 'Note': '', });
 lyr_PianoUrbanisticoComunale.set('fieldLabels', {'ClassID': 'no label', 'Zona': 'no label', });
 lyr_Particelle.set('fieldLabels', {'CODE': 'no label', 'CDU': 'no label', });
+lyr_Vestizione.set('fieldLabels', {'INSPIREID_': 'no label', 'INSPIREI_1': 'no label', 'LABEL': 'no label', 'NATIONALCA': 'no label', 'ADMINISTRA': 'no label', 'COMUNE': 'no label', 'MAPPA': 'no label', 'CODE': 'no label', 'PPR_AMB_PA': 'no label', 'PAI_PI': 'no label', 'PAI_PG': 'no label', 'PAI_DP': 'no label', 'PAI_RI': 'no label', 'PAI_RG': 'no label', 'CDU': 'no label', 'LINK': 'no label', });
+lyr_Mappe.set('fieldLabels', {'INSPIREID_': 'no label', 'INSPIREI_1': 'no label', 'LABEL': 'no label', 'NATIONALCA': 'no label', 'BEGINLIFES': 'no label', 'ENDLIFESPA': 'no label', 'LEVEL': 'no label', 'LEVELNAME': 'no label', 'LEVELNAME_': 'no label', 'ORIGINALMA': 'no label', 'ADMINISTRA': 'no label', });
 lyr_Maschera.set('fieldLabels', {'FID': 'no label', });
 lyr_LimiteComune.set('fieldLabels', {'ClassID': 'no label', 'AVDICM': 'no label', 'MNDICM': 'no label', 'CIstat': 'no label', 'CBelfiore': 'no label', 'Nome': 'no label', 'Shape_Leng': 'no label', 'Shape_Area': 'no label', 'Determina': 'no label', 'Note': 'no label', });
 lyr_LimiteComune.on('precompose', function(evt) {
