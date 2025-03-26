@@ -1,5 +1,5 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:25832").setExtent([547497.447689, 4460527.243122, 575354.544911, 4486855.048678]);
+//ol.proj.get("EPSG:25832").setExtent([551577, 4463447, 571240, 4482031]);
 var wms_layers = [];
 
 var format_Sfondobianco = new ol.format.GeoJSON();
@@ -33,28 +33,33 @@ var lyr_Sfondobianco = new ol.layer.Vector({
         });
 
         var lyr_GoogleHybrid = new ol.layer.Tile({
-            'title': 'Google Hybrid',
-            'baseLayer':'true',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-            attributions: ' &middot; <a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-                url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}'
-            })
-        });
+    'title': 'Google Hybrid',
+    'baseLayer': true,
+    'opacity': 1.0,
+    source: new ol.source.XYZ({
+        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Map data © Google</a>',
+        url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&apistyle=s',
+        maxZoom: 19,  // Limitiamo lo zoom massimo per migliorare la velocità
+        crossOrigin: 'anonymous',  // Evita problemi di sicurezza CORS
+        cacheSize: 512,  // Riduce il carico della memoria mantenendo solo 512 tile in cache
+        transition: 0  // Disabilita le transizioni per un caricamento più rapido
+    })
+});
 
-        var lyr_GoogleSatellite = new ol.layer.Tile({
-            'title': 'Google Satellite',
-            'baseLayer':'true',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-            attributions: ' &middot; <a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
-                url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
-            })
-        });
+    var lyr_GoogleSatellite = new ol.layer.Tile({
+    'title': 'Google Satellite',
+    'baseLayer': true,
+    'opacity': 1.0,
+    source: new ol.source.XYZ({
+        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Map data © Google</a>',
+        url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+        maxZoom: 19,  // Riduciamo leggermente lo zoom massimo
+        crossOrigin: 'anonymous',
+        cacheSize: 512,  // Limita il numero di tile in memoria per evitare rallentamenti
+        transition: 0  // Rimuove l’effetto di transizione per caricare le tile più velocemente
+    })
+});
+
 var lyr_Ortofoto2019 = new ol.layer.Tile({
             source: new ol.source.TileWMS(({
                 url: "https://webgis.regione.sardegna.it/geoserverraster/ows",
@@ -1407,7 +1412,7 @@ var jsonSource_Mappe = new ol.source.Vector({
 jsonSource_Mappe.addFeatures(features_Mappe);
 var lyr_Mappe = new ol.layer.Vector({
             declutter: false,
-            source:jsonSource_Mappe, 
+            source:jsonSource_Mappe, minResolution:1.4,
             style: style_Mappe,
             permalink: "Mappe",
             popuplayertitle: 'Mappe',
