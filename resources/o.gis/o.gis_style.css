@@ -2738,3 +2738,11 @@
 		  border-radius: 5px;
 		  background-color: #ddd;
 		}
+
+	/* Ingrandisci legenda WMS */	/* modificato */
+.layerlegend img {
+    width: auto;  /* Mantiene le proporzioni originali */
+    height: auto; /* Mantiene le proporzioni originali */
+    max-width: 500px;  /* Imposta una larghezza massima più grande */
+    max-height: 300px; /* Imposta un'altezza massima più grande */
+}

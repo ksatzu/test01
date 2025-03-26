@@ -7,7 +7,7 @@ var style_Mappe = function(feature, resolution){
         variables: {}
     };
     var labelText = ""; var value = feature.get("");
-    var labelFont = "13.0px \'Arial\', sans-serif";
+    var labelFont = "10.4px \'Arial\', sans-serif";
     var labelFill = "#158c4d";
     var bufferColor = "#fafafa";
     var bufferWidth = 1.0;
@@ -15,7 +15,7 @@ var style_Mappe = function(feature, resolution){
     var offsetX = 8;
     var offsetY = 3;
     var placement = 'point';
-    if (feature.get("'Foglio-'||\"LABEL\"") !== null) {
+    if (feature.get("'Foglio-'||\"LABEL\"") !== null && resolution > 0 && resolution < 0) {
         labelText = String(feature.get("'Foglio-'||\"LABEL\""));
     }
     var style = [ new ol.style.Style({

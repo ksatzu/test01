@@ -87,9 +87,9 @@
 			<label><a href="./index.html"><img src="./resources/stemma.png" align="left" height="60" title='Reset map'></img></a></label>
 			<h1 align="center" style="color: #338023;">Geoportale<br>Comune di Orosei</h1>
 			</div>
-			<!-- form query wms wfs	 --><!-- modificato -- oscurato -->
+			<!-- form query wms wfs	 --> <!-- modificato -->
 			<form id="form_querywmswfs" style="display: none; height:74px!important">
-				<label><b>Query WMS layers only</b><br /><a>Turn on the WMS layers, click on the map and wait for the result. The response varies based on the speed of the external server.</a></label>
+				<label><b>Interroga i layers WMS</b><br /><a>Attiva i layer WMS, clicca sulla mappa e attendi il risultato. La risposta varia in base alla velocità del server esterno.</a></label>
 			</form>	
 			<!-- form popup all -->	  
 			<form id="form_popupall" style="display: none">
@@ -193,8 +193,8 @@
         <script src="./resources/ol.js"></script>
         <script src="./resources/ol-layerswitcher.js"></script>
 		-->
-		<script src="layers/PianoUrbanisticoComunale.js"></script><script src="layers/Particelle.js"></script><script src="layers/Vestizione.js"></script><script src="layers/Mappe.js"></script><script src="layers/Maschera.js"></script><script src="layers/LimiteComune.js"></script>
-        <script src="styles/PianoUrbanisticoComunale_style.js"></script><script src="styles/Particelle_style.js"></script><script src="styles/Vestizione_style.js"></script><script src="styles/Mappe_style.js"></script><script src="styles/Maschera_style.js"></script><script src="styles/LimiteComune_style.js"></script>
+		<script src="layers/Sfondobianco.js"></script><script src="layers/Usicivici.js"></script><script src="layers/PianoUrbanisticoComunale.js"></script><script src="layers/Particelle.js"></script><script src="layers/Mappe.js"></script><script src="layers/Maschera.js"></script><script src="layers/LimiteComune.js"></script>
+        <script src="styles/Sfondobianco_style.js"></script><script src="styles/Usicivici_style.js"></script><script src="styles/PianoUrbanisticoComunale_style.js"></script><script src="styles/Particelle_style.js"></script><script src="styles/Mappe_style.js"></script><script src="styles/Maschera_style.js"></script><script src="styles/LimiteComune_style.js"></script>
 		<!--
         <script src="./layers/layers.js" type="text/javascript"></script> 
 		-->
@@ -207,7 +207,7 @@
 		<script src="./resources/o.gis/o.gis.js"></script>	  
  <!-- Geocoder search language -->
 <script>
-	geocoder.options.lang = 'en-US';   // it-IT, pt-BR, fr-FR
+	geocoder.options.lang = 'it-IT';   // it-IT, pt-BR, fr-FR, en-US  <!-- modificato -->
 </script> 
 
 <!-- bookmark 	
@@ -371,7 +371,7 @@
 <script>	
 	// Define your own static attribution 
 	attributionList.innerHTML = `
-		<a href="https://www.openstreetmap.org/" target="_blank">OSM</a> &middot;
+        &middot;
 		<a href="https://www.agenziaentrate.gov.it/portale/" target="_blank">AgenziaEntrate</a> &middot;
         <a href="https://www.sardegnageoportale.it" target="_blank">RAS</a> &middot;
         <a href="https://www.comune.orosei.nu.it" target="_blank">ComuneOrosei</a>
