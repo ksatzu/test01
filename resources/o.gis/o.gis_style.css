@@ -27,7 +27,7 @@
 	transform: rotate(180deg);
 	}
 	.sidebar-right:not(.collapsed) > .sidebar-tabs {
-	background-color: rgba(127, 157, 195, 1);
+	background-color: rgba(140, 200, 150, 1); /* modificato */
 	}
 	.sidebar-right.collapsed > .sidebar-tabs > ul > li:hover{
 	background-color: unset;
@@ -111,7 +111,7 @@
 		font-weight: 900;
 	}
 	.ol-control button:hover{
-		background-color: rgba(251, 214, 105)!important;
+		background-color: rgba(251, 214, 105, 1)!important;
 		}
 	.ol-control button.clicked{
 		background-color: rgba(251, 214, 105)!important;
@@ -256,7 +256,7 @@
 			display: inline;
 		}		
 		.querywmswfs.ol-active > button {
-			background-color: rgba(251, 214, 105);
+			background-color: rgba(251, 214, 105, 1);
 		}
 		
 		#form_querywmswfs {
@@ -615,7 +615,7 @@
 
 		#layer-combo {
 		border-radius: 5px;
-		background-color: rgba(251, 214, 105);
+		background-color: rgbA(251, 214, 105);
 		}
 		#layer-combo option {
 		background-color: white;
@@ -856,7 +856,7 @@
 		border-radius: 4px;
 		cursor: pointer;
 		float: right;
-		background-color: #4caf50 !important;
+		background-color: rgba(76, 175, 80, 1); !important;
 		color: white;
 		}
 

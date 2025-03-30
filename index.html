@@ -133,7 +133,7 @@
 					<div class="sidebar-content">
 						<div class="sidebar-pane" id="tab1">
 							<h1 class="sidebar-header">
-								The System
+								Geoportale Comune di Orosei
 								<span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
 							</h1>
 							<iframe frameborder="0" scrolling="auto" 
@@ -228,8 +228,179 @@
 			permalink.setUrlParam('book');	
 		}			  
 </script> -->
+    
+<!-- Search feature -->    <!-- modifica --> 
+    
+<script>
+    // Imposta la ricerca sulla sorgente corretta
+    search.setSource(jsonSource_Particelle);
+    search.set('property', 'CODE'); // Campo di ricerca
 
-    <!-- Search feature -->     <!-- modifica --> 
+    setTimeout(function () {
+        var inputField = search.element.querySelector('.ol-search input');
+        if (inputField) {
+            inputField.placeholder = 'Cerca Particella (es: 123456) ...';
+        }
+    }, 100);
+
+    // Variabile per salvare lo stile originale e flag per determinare se la ricerca è attiva
+    var originalStyle = {}; 
+    var isSearchActive = false;  // Flag per determinare se la ricerca è attiva
+    var lastExtent = null; // Per memorizzare l'extent attuale
+    var lastFeature = null; // Memorizza l'ultima feature selezionata
+
+    // Quando viene selezionata una particella nella ricerca
+    search.on('select', function (e) { 
+        if (e.search && !isSearchActive) { // Solo se la ricerca non è già attiva
+            var feature = e.search;
+            lyr_Particelle.setVisible(true); // Mostra il layer
+
+            // Memorizza l'extent attuale prima di fare il fit
+            lastExtent = map.getView().calculateExtent();
+
+            // *** 1. Zoom sull'oggetto ricercato con margine ***
+            var extent = feature.getGeometry().getExtent();
+            var buffer = 50; // Modifica questo valore per più/meno zoom out
+            var newExtent = [
+                extent[0] - buffer, // Sinistra
+                extent[1] - buffer, // Basso
+                extent[2] + buffer, // Destra
+                extent[3] + buffer  // Alto
+            ];
+
+            map.getView().fit(newExtent, { duration: 1000 }); // Zoom più morbido
+
+            // *** 2. Ripristina gli stili di tutte le features (per evitare stili sovrascritti) ***
+            lyr_Particelle.getSource().getFeatures().forEach(function (feat) {
+                if (originalStyle[feat.getId()]) {
+                    feat.setStyle(originalStyle[feat.getId()]); // Ripristina stile originale
+                }
+            });
+
+            // *** 3. Salva lo stile originale e imposta un nuovo stile evidenziato per l'oggetto selezionato ***
+            originalStyle[feature.getId()] = feature.getStyle(); // Salva lo stile corrente
+            feature.setStyle(new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(0, 0, 0, 1)', // Colore del bordo evidenziato
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.1)' // Colore riempimento evidenziato
+                })
+            }));
+
+            // *** 4. Filtra la visualizzazione per mostrare solo l'oggetto selezionato ***
+            lyr_Particelle.getSource().getFeatures().forEach(function (feat) {
+                if (feat !== feature) {
+                    feat.setStyle(new ol.style.Style({
+                        // Nascondi gli altri oggetti
+                        stroke: new ol.style.Stroke({ color: 'rgba(0, 0, 0, 0)' }), // Bordo invisibile
+                        fill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0)' }) // Riempimento invisibile
+                    }));
+                }
+            });
+
+            // Salva l'ultima feature selezionata
+            lastFeature = feature;
+
+            // Imposta il flag per la ricerca attiva
+            isSearchActive = true;
+        } else if (e.search && isSearchActive) {
+            // Se una nuova ricerca viene fatta quando una precedente è ancora attiva, ripristina lo stile dell'oggetto precedente
+            if (lastFeature) {
+                lastFeature.setStyle(originalStyle[lastFeature.getId()] || null); // Ripristina lo stile originale della feature precedente, o a null se non esiste
+            }
+
+            var feature = e.search;
+            lyr_Particelle.setVisible(true); // Mostra il layer
+
+            // Memorizza l'extent attuale prima di fare il fit
+            lastExtent = map.getView().calculateExtent();
+
+            // *** 1. Zoom sull'oggetto ricercato con margine ***
+            var extent = feature.getGeometry().getExtent();
+            var buffer = 50; // Modifica questo valore per più/meno zoom out
+            var newExtent = [
+                extent[0] - buffer, // Sinistra
+                extent[1] - buffer, // Basso
+                extent[2] + buffer, // Destra
+                extent[3] + buffer  // Alto
+            ];
+
+            map.getView().fit(newExtent, { duration: 1000 }); // Zoom più morbido
+
+            // *** 2. Ripristina gli stili di tutte le features (per evitare stili sovrascritti) ***
+            lyr_Particelle.getSource().getFeatures().forEach(function (feat) {
+                if (originalStyle[feat.getId()]) {
+                    feat.setStyle(originalStyle[feat.getId()]); // Ripristina stile originale
+                }
+            });
+
+            // *** 3. Salva lo stile originale e imposta un nuovo stile evidenziato per l'oggetto selezionato ***
+            originalStyle[feature.getId()] = feature.getStyle(); // Salva lo stile corrente
+            feature.setStyle(new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: 'rgba(0, 0, 0, 1)', // Colore del bordo evidenziato
+                    width: 3
+                }),
+                fill: new ol.style.Fill({
+                    color: 'rgba(255, 255, 255, 0.1)' // Colore riempimento evidenziato
+                })
+            }));
+
+            // *** 4. Filtra la visualizzazione per mostrare solo l'oggetto selezionato ***
+            lyr_Particelle.getSource().getFeatures().forEach(function (feat) {
+                if (feat !== feature) {
+                    feat.setStyle(new ol.style.Style({
+                        // Nascondi gli altri oggetti
+                        stroke: new ol.style.Stroke({ color: 'rgba(0, 0, 0, 0)' }), // Bordo invisibile
+                        fill: new ol.style.Fill({ color: 'rgba(255, 255, 255, 0)' }) // Riempimento invisibile
+                    }));
+                }
+            });
+
+            // Salva l'ultima feature selezionata
+            lastFeature = feature;
+        }
+    });
+
+    // Aggiungi un evento al pulsante di ricerca per ripristinare la visualizzazione quando cliccato di nuovo
+    var searchButton = document.querySelector('.ol-search button'); // Trova il pulsante di ricerca
+    if (searchButton) {
+        searchButton.addEventListener('click', function () {
+            if (isSearchActive) {
+                resetSearch(); // Funzione per ripristinare la visualizzazione
+            }
+        });
+    }
+
+    // Funzione per ripristinare la visualizzazione del layer e degli stili
+    function resetSearch() {
+        // Ripristina la visibilità di tutte le feature e il loro stile
+        var source = lyr_Particelle.getSource();
+        source.getFeatures().forEach(function (feat) {
+            if (originalStyle[feat.getId()]) {
+                feat.setStyle(originalStyle[feat.getId()] || null); // Ripristina lo stile originale o a null se non esiste
+            } else {
+                feat.setStyle(null); // In caso non ci sia uno stile salvato, ripristina a null
+            }
+        });
+
+        // Nascondi il layer delle particelle
+        lyr_Particelle.setVisible(false);
+
+        // Ripristina l'extent precedente per evitare un altro fit extend
+        if (lastExtent) {
+            map.getView().fit(lastExtent, { duration: 1000 });
+        }
+
+        // Imposta la ricerca come non attiva
+        isSearchActive = false;
+    }
+</script>
+
+    
+    <!-- search feature single layer
 <script>
     // Imposta direttamente la fonte di ricerca
     search.setSource(jsonSource_Particelle);
@@ -253,7 +424,10 @@
         }
     });
 </script>
-<!-- search feature multiple
+    --> 
+    
+    
+<!-- search feature multiple layer
 <script>
 			// Insert combo box for source choice
 			var selectElt = document.createElement('select');
@@ -300,7 +474,8 @@
 			  handleComboBoxChange(); 
 			});		
 </script> -->
-<!-- overview map -->		
+    
+<!-- overview map 		
 <script>
 			var MaxMapExtent = map.getView().getProperties().extent;
 			var ov = new ol.control.Overview({
@@ -350,6 +525,8 @@
 			// Set button title
 			overviewbuttontitle.attr('title', 'Minimap');			
 </script>
+-->
+    
 <!-- mouse position coordinates 
 <script>
 		showProjection = 'EPSG:3857'
@@ -374,7 +551,7 @@
         &middot;
 		<a href="https://www.agenziaentrate.gov.it/portale/" target="_blank">AgenziaEntrate</a> &middot;
         <a href="https://www.sardegnageoportale.it" target="_blank">RAS</a> &middot;
-        <a href="https://www.comune.orosei.nu.it" target="_blank">ComuneOrosei</a>
+        <a href="https://www.comune.orosei.nu.it" target="_blank">Comune Orosei</a> &middot
 ` ;
 </script>
 <!-- remove control

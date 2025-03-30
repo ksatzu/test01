@@ -11,14 +11,14 @@
 		  }), */
 		  stroke: new ol.style.Stroke({
 			//color: "rgba(255, 204, 51)", //giallo ocra
-			color: "rgba(0, 0, 255)", //blu
+			color: "rgba(0, 0, 255, 1)", //blu
 			lineDash: [10, 10],
 			width: 4
 		  }),
 		  image: new ol.style.Circle({
 		radius: 6,
 		stroke: new ol.style.Stroke({
-		  color: "rgba(255, 255, 255)", //cerchio esterno bianco
+		  color: "rgba(255, 255, 255, 1)", //cerchio esterno bianco
 		  width: 1
 		}),
 			  //fill: new ol.style.Fill({
@@ -356,8 +356,8 @@
 	  //provider: 'bing', //'osm'  'bing' 
 	  //key: 'AgsaZIeoGbwnD9FY7lbWR1PrywB-jy3cUFKxuZjG69Ek831ffrBjYkv0vCpVVDhp',
 	  provider: 'osm',
-	  lang: 'en-US', //'en-US'  'it-IT'
-	  placeholder: 'Search Address ...',
+	  lang: 'it-IT', //'en-US'  'it-IT'
+	  placeholder: 'Cerca indirizzo ...',
 	  limit: 5,
 	  keepOpen: false,
 	  //autoComplete: true,

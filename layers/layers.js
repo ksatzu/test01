@@ -27,7 +27,7 @@ var lyr_Sfondobianco = new ol.layer.Vector({
             
             
             source: new ol.source.XYZ({
-            attributions: ' &middot; <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            attributions: ' &middot; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
                 url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
             })
         });
@@ -37,7 +37,7 @@ var lyr_Sfondobianco = new ol.layer.Vector({
     'baseLayer': true,
     'opacity': 1.0,
     source: new ol.source.XYZ({
-        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Map data © Google</a>',
+        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Google</a>',
         url: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}&apistyle=s',
         maxZoom: 19,  // Limitiamo lo zoom massimo per migliorare la velocità
         crossOrigin: 'anonymous',  // Evita problemi di sicurezza CORS
@@ -51,7 +51,7 @@ var lyr_Sfondobianco = new ol.layer.Vector({
     'baseLayer': true,
     'opacity': 1.0,
     source: new ol.source.XYZ({
-        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Map data © Google</a>',
+        attributions: ' &middot; <a href="https://www.google.com/permissions/geoguidelines/attr-guide.html">Google</a>',
         url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
         maxZoom: 19,  // Riduciamo leggermente lo zoom massimo
         crossOrigin: 'anonymous',
@@ -1395,8 +1395,7 @@ jsonSource_Particelle.addFeatures(features_Particelle);
 var lyr_Particelle = new ol.layer.Vector({
             declutter: false,
             source:jsonSource_Particelle,
-maxResolution:0.28004466152261964,
- 
+            maxResolution:0, //0.28004466152261964//
             style: style_Particelle,
             permalink: "Particelle",
             popuplayertitle: 'Particelle',
@@ -1412,7 +1411,8 @@ var jsonSource_Mappe = new ol.source.Vector({
 jsonSource_Mappe.addFeatures(features_Mappe);
 var lyr_Mappe = new ol.layer.Vector({
             declutter: false,
-            source:jsonSource_Mappe, minResolution:1.4,
+            source:jsonSource_Mappe,
+            minResolution:1.4,
             style: style_Mappe,
             permalink: "Mappe",
             popuplayertitle: 'Mappe',
